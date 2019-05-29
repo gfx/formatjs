@@ -35,9 +35,9 @@ IntlRelativeFormat.__addLocaleData(${allLocaleFiles[lang]})`
   );	
 });	
 
- // Aggregate all into lib/locales.js	
+ // Aggregate all into lib/locales.ts	
 outputFileSync(	
-  resolve(__dirname, '../src/locales.js'),	
+  resolve(__dirname, '../src/locales.ts'),	
   `/* @generated */	
 import IntlRelativeFormat from "./core";\n
 IntlRelativeFormat.__addLocaleData(${Object.keys(allLocaleFiles)	
@@ -50,7 +50,7 @@ export default IntlRelativeFormat;
  // Extract src/en.js	
 const en = extractLocales(['en']);	
 outputFileSync(	
-  resolve(__dirname, '../src/en.js'),	
+  resolve(__dirname, '../src/en.ts'),	
   `/* @generated */	
 export default ${en.en};	
 `	

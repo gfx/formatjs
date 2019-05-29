@@ -4,11 +4,7 @@ Copyrights licensed under the New BSD License.
 See the accompanying LICENSE file for terms.
 */
 
-/* jslint esnext: true */
-
-var round = Math.round;
-
-function daysToYears(days) {
+function daysToYears(days: number) {
     // 400 years have 146097 days (taking into account leap year rules)
     return days * 400 / 146097;
 }
@@ -17,16 +13,16 @@ function daysToYears(days) {
 // https://github.com/date-fns/date-fns
 // MIT © Sasha Koss
 
-var MILLISECONDS_IN_MINUTE = 60000;
-var MILLISECONDS_IN_DAY = 86400000;
+const MILLISECONDS_IN_MINUTE = 60000;
+const MILLISECONDS_IN_DAY = 86400000;
 
-function startOfDay (dirtyDate) {
+function startOfDay (dirtyDate: ConstructorParameters<typeof Date>[0]) {
     var date = new Date(dirtyDate);
     date.setHours(0, 0, 0, 0);
     return date;
 }
 
-function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight) {
+function differenceInCalendarDays (dirtyDateLeft: ConstructorParameters<typeof Date>[0], dirtyDateRight: ConstructorParameters<typeof Date>[0]) {
     var startOfDayLeft = startOfDay(dirtyDateLeft);
     var startOfDayRight = startOfDay(dirtyDateRight);
 
@@ -41,26 +37,26 @@ function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight) {
     return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_DAY);
 }
 
-export default function (from, to) {
+export default function (from: ConstructorParameters<typeof Date>[0], to: ConstructorParameters<typeof Date>[0]) {
     // Convert to ms timestamps.
     from = +from;
     to   = +to;
 
-    var millisecond = round(to - from),
-        second      = round(millisecond / 1000),
-        minute      = round(second / 60),
-        hour        = round(minute / 60);
+    var millisecond = Math.round(to - from),
+        second      = Math.round(millisecond / 1000),
+        minute      = Math.round(second / 60),
+        hour        = Math.round(minute / 60);
 
         // We expect a more precision in rounding when dealing with
         // days as it feels wrong when something happended 13 hours ago and
         // is regarded as "yesterday" even if the time was this morning.
 
     var day = differenceInCalendarDays(to, from);
-    var week = round(day / 7);
+    var week = Math.round(day / 7);
 
     var rawYears = daysToYears(day),
-        month    = round(rawYears * 12),
-        year     = round(rawYears);
+        month    = Math.round(rawYears * 12),
+        year     = Math.round(rawYears);
 
     return {
         millisecond    : millisecond,
