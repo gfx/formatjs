@@ -4,7 +4,6 @@ const { outputFileSync } = require('fs-extra');
 const serialize = require('serialize-javascript');	
 
  const data = extractData({
-  pluralRules   : true,
   relativeFields: true,
  });	
 

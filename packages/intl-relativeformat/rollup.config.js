@@ -9,7 +9,7 @@ const resolveConfig = resolve({
 const uglifyConfig = uglify();
 export default [
   {
-    input: './src/main.js',
+    input: './lib/main.js',
     output: {
       sourcemap: true,
       file: 'dist/intl-relativeformat.js',
@@ -19,7 +19,7 @@ export default [
     plugins: [resolveConfig]
   },
   {
-    input: './src/main.js',
+    input: './lib/main.js',
     output: {
       sourcemap: true,
       file: 'dist/intl-relativeformat.min.js',
@@ -29,7 +29,7 @@ export default [
     plugins: [resolveConfig, uglifyConfig]
   },
   {
-    input: './src/locales.js',
+    input: './lib/locales.js',
     output: {
       sourcemap: true,
       file: 'dist/intl-relativeformat-with-locales.js',
@@ -39,7 +39,7 @@ export default [
     plugins: [resolveConfig]
   },
   {
-    input: './src/locales.js',
+    input: './lib/locales.js',
     output: {
       sourcemap: true,
       file: 'dist/intl-relativeformat-with-locales.min.js',

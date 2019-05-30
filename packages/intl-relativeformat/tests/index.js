@@ -32,6 +32,11 @@ describe('IntlRelativeFormat', function () {
         expect(IntlRelativeFormat).to.be.a('function');
     });
 
+    it('should work w/o new', function () {
+        const rf = IntlRelativeFormat()
+        expect(rf.resolvedOptions().locale).to.equal('en');
+    })
+
     // STATIC
 
     describe('.__addLocaleData( [obj] )', function () {
