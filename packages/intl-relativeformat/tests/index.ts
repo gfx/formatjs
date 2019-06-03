@@ -4,7 +4,7 @@
  * See the accompanying LICENSE file for terms.
  */
 
-import 'intl-relativetimeformat/lib/polyfill';
+import 'intl-relativetimeformat/polyfill-locales';
 import IntlRelativeFormat, { IntlRelativeFormatOptions } from '../src';
 import { expect as chaiExpect } from 'chai';
 import { LocaleData, STYLE, SUPPORTED_FIELD } from '../src/types';
@@ -40,14 +40,6 @@ describe('IntlRelativeFormat', function() {
   it('should work w/o new', function() {
     const rf = IntlRelativeFormat();
     expect(rf.resolvedOptions().locale).to.equal('en');
-  });
-
-  // STATIC
-
-  describe('.__addLocaleData( [obj] )', function() {
-    it('should respond to .__addLocaleData()', function() {
-      expect(IntlRelativeFormat.__addLocaleData).to.be.a('function');
-    });
   });
 
   // INSTANCE METHODS
